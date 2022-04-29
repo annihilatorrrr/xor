@@ -11,6 +11,7 @@ import { wrap } from '../../helpers'
 import { version } from '../../constants'
 import { CommandHandler } from '../../handlers'
 import { pre, whois } from './helpers'
+import knex from '../../knex'
 
 const util: Module = {
 	name: 'util',
@@ -22,6 +23,7 @@ const util: Module = {
 			await event.message.edit({
 				text: event.message.text + ' ' + diff + 'ms'
 			})
+			console.log(await knex.schema.hasTable('pmpermit'))
 		}),
 		new CommandHandler(
 			'shell',
